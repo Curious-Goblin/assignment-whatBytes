@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
 
 interface Errorstype {
-    rank?: string;
-    percentile?: string;
-    score?: string;
+    stats: {
+        rank?: string;
+        percentile?: string;
+        score?: string;
+    }
 }
 
 interface UpdateScoresProps {
@@ -17,53 +19,50 @@ interface UpdateScoresProps {
 }
 
 export function UpdateScores({ onClose, rank, setRank, percentile, setPercentile, score, setScore }: UpdateScoresProps) {
-    const [errors, setErrors] = useState<Errorstype>({});
-    const [stats, setStats] = useState(
-        {
-            rank: '',
-            percentile: '',
-            score: ''
-        }
-    )
+    const [errors, setErrors] = useState<Errorstype>({ stats: {} });
+    const [stats, setStats] = useState({
+        rank: '',
+        percentile: '',
+        score: ''
+    });
 
     const validate = (): Errorstype => {
-        let errors: Errorstype = {};
+        let errors: Errorstype = { stats: {} };
 
-        if (!rank) {
-            errors.rank = 'Rank should be a number';
-        } else if (isNaN(Number(rank))) {
-            errors.rank = 'Rank should be a number';
+        if (!stats.rank) {
+            errors.stats.rank = 'Rank should be a number';
+        } else if (isNaN(Number(stats.rank))) {
+            errors.stats.rank = 'Rank should be a number';
         }
 
-        if (!percentile) {
-            errors.percentile = 'Required | Percentile 0-100';
-        } else if (Number(percentile) < 0 || Number(percentile) > 100) {
-            errors.percentile = 'Percentile must be between 0 and 100';
+        if (!stats.percentile) {
+            errors.stats.percentile = 'Required | Percentile 0-100';
+        } else if (Number(stats.percentile) < 0 || Number(stats.percentile) > 100) {
+            errors.stats.percentile = 'Percentile must be between 0 and 100';
         }
 
-        if (!score) {
-            errors.score = 'Score is required';
-        } else if (Number(score) < 0 || Number(score) > 15) {
-            errors.score = 'Score should be between 0 and 15';
-        } else if (isNaN(Number(score))) {
-            errors.score = 'Score should be a number between 0-15';
+        if (!stats.score) {
+            errors.stats.score = 'Score is required';
+        } else if (Number(stats.score) < 0 || Number(stats.score) > 15) {
+            errors.stats.score = 'Score should be between 0 and 15';
+        } else if (isNaN(Number(stats.score))) {
+            errors.stats.score = 'Score should be a number between 0-15';
         }
 
         return errors;
     };
 
     const handleSave = () => {
-        const errors = validate();
-        if (Object.keys(errors).length > 0) {
-            setErrors(errors);
-        } else {
-            setRank(stats.rank)
-            setPercentile(stats.percentile)
-            setScore(stats.score)
-            console.log({ rank, percentile, score });
+        const validationErrors = validate();
+        setErrors(validationErrors);
+
+        if (Object.keys(validationErrors.stats).length === 0) {
+            setRank(stats.rank);
+            setPercentile(stats.percentile);
+            setScore(stats.score);
+            console.log({ rank: stats.rank, percentile: stats.percentile, score: stats.score });
             onClose();
         }
-        return [rank, percentile, score]
     };
 
     return (
@@ -81,6 +80,7 @@ export function UpdateScores({ onClose, rank, setRank, percentile, setPercentile
                         <div className='flex flex-col'>
                             <input
                                 type="number"
+                                value={stats.rank}
                                 onChange={(e) => setStats(prev => ({
                                     ...prev,
                                     rank: e.target.value
@@ -88,7 +88,7 @@ export function UpdateScores({ onClose, rank, setRank, percentile, setPercentile
                                 className="w-full font-bold max-w-44 border border-gray-300 rounded p-2"
                             />
                             <div>
-                                {errors.rank && <p className="text-red-500 text-sm mt-1">{errors.rank}</p>}
+                                {errors.stats.rank && <p className="text-red-500 text-sm mt-1">{errors.stats.rank}</p>}
                             </div>
                         </div>
                     </div>
@@ -99,6 +99,7 @@ export function UpdateScores({ onClose, rank, setRank, percentile, setPercentile
                         <div className='flex flex-col'>
                             <input
                                 type="number"
+                                value={stats.percentile}
                                 onChange={(e) => setStats(prev => ({
                                     ...prev,
                                     percentile: e.target.value
@@ -106,7 +107,7 @@ export function UpdateScores({ onClose, rank, setRank, percentile, setPercentile
                                 className="w-full font-bold max-w-44 border border-gray-300 rounded p-2"
                             />
                             <div>
-                                {errors.percentile && <p className="text-red-500 text-sm mt-1">{errors.percentile}</p>}
+                                {errors.stats.percentile && <p className="text-red-500 text-sm mt-1">{errors.stats.percentile}</p>}
                             </div>
                         </div>
                     </div>
@@ -117,6 +118,7 @@ export function UpdateScores({ onClose, rank, setRank, percentile, setPercentile
                         <div className='flex flex-col'>
                             <input
                                 type="number"
+                                value={stats.score}
                                 onChange={(e) => setStats(prev => ({
                                     ...prev,
                                     score: e.target.value
@@ -124,7 +126,7 @@ export function UpdateScores({ onClose, rank, setRank, percentile, setPercentile
                                 className="w-full font-bold max-w-44 border border-gray-300 rounded p-2"
                             />
                             <div>
-                                {errors.score && <p className="text-red-500 text-sm mt-1">{errors.score}</p>}
+                                {errors.stats.score && <p className="text-red-500 text-sm mt-1">{errors.stats.score}</p>}
                             </div>
                         </div>
                     </div>
