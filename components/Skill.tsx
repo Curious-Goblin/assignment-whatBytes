@@ -1,26 +1,22 @@
-"use client";
+"use client"
 
-import { useRecoilValue } from "recoil";
 import { Comparision } from "./Comparision";
 import { Html } from "./Html";
 import { QuestionAnalysis } from "./Question";
 import { Statistics } from "./Statistics";
 import { SyllabusAnalysis } from "./Syllabus";
-import { percentileState, rankState, scoreState } from "@/atoms/Statistics";
 import { useEffect, useState } from "react";
 import { SidebarN } from "./Sidebar-1";
 
 export function Skill() {
-    const rank = useRecoilValue<string>(rankState);
-    const percentile = useRecoilValue<string>(percentileState);
-    const correctAnswers = useRecoilValue<string>(scoreState);
+    const [rank, setRank] = useState<string>('0');
+    const [percentile, setPercentile] = useState<string>('0');
+    const [score, setScore] = useState<string>('0');
     const [isOpen, setIsOpen] = useState(false)
-    console.log(rank, percentile, correctAnswers);
 
     useEffect(() => {
-        console.log(rank, percentile, correctAnswers);
-        console.log("Rank, percentile, or correctAnswers changed");
-    }, [rank, percentile, correctAnswers]);
+        console.log("Rank, percentile, or score changed");
+    }, [rank, percentile, score]);
 
     return (
         <div className="md:p-16 md:pt-10 flex-grow">
@@ -30,27 +26,34 @@ export function Skill() {
                     className="md:hidden pb-2 size-8">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
                 </svg>
-                {isOpen && <SidebarN isOpen={isOpen} setIsOpen={setIsOpen}/>}
-                
-                Skill test {rank} {percentile} {correctAnswers}
+                {isOpen && <SidebarN isOpen={isOpen} setIsOpen={setIsOpen} />}
+
+                Skill test
             </div>
             <div className="flex flex-col md:flex-row ">
-                <div className="w-screen md:w-2/3 mb-6 md:mb-0 md:pr-4">
+                <div className="w-screen md:w-1/2 mb-6 md:mb-0 md:pr-4">
                     <Html
                         questions="08"
                         duration="15"
                         submittedDate="5 June 2021"
+                        rank={rank}
+                        setRank={setRank}
+                        percentile={percentile}
+                        setPercentile={setPercentile}
+                        score={score}
+                        setScore={setScore}
                     />
                     <Statistics
                         rank={rank}
                         percentile={percentile}
-                        correctAnswers={correctAnswers}
+                        score={score}
                     />
                     <Comparision percentile={percentile} />
                 </div>
                 <div className="w-screen md:w-1/2 md:pl-4">
                     <SyllabusAnalysis />
-                    <QuestionAnalysis correctAnswers={correctAnswers} />
+                    {/* @ts-ignore */}
+                    <QuestionAnalysis score={score} />
                 </div>
             </div>
         </div>

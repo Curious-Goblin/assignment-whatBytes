@@ -1,9 +1,19 @@
-"use client"
 
-import { RecoilRoot } from "recoil";
 import { Update } from "./Update";
 
-export function Html({ questions, duration, submittedDate }) {
+interface HtmlPropsType {
+    rank?: string;
+    percentile?: string;
+    score?: string;
+    setRank: (value: string) => void;
+    setPercentile: (value: string) => void;
+    setScore: (value: string) => void;
+    questions: string;
+    duration: string;
+    submittedDate: string;
+}
+
+export function Html({ questions, duration, submittedDate, rank, setRank, percentile, setPercentile, score, setScore }: HtmlPropsType) {
     return (
         <div className="m-3 flex flex-col md:flex-row justify-evenly border rounded-lg p-1 md:p-2 lg:p-5">
             <div className="flex">
@@ -23,9 +33,13 @@ export function Html({ questions, duration, submittedDate }) {
                 </div>
             </div>
             <div className="w-fit pt-2 pb-4 md:pb-0 md:pt-0 md:pl-4">
-                <RecoilRoot>
-                <Update />
-                </RecoilRoot>
+                <Update
+                    rank={rank}
+                    setRank={setRank}
+                    percentile={percentile}
+                    setPercentile={setPercentile}
+                    score={score}
+                    setScore={setScore} />
             </div>
         </div>
     )

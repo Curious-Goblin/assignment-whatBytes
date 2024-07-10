@@ -1,4 +1,4 @@
-export function Statistics({ percentile, rank, correctAnswers }:{percentile:string,rank:string,correctAnswers:string}) {
+export function Statistics({ percentile, rank, score }:{percentile:string,rank:string,score:string}) {
     return (
         <div className="border rounded-lg p-2 md:p-2 lg:p-5 m-3 mt-8">
             <div className="font-extrabold text-xl">
@@ -24,7 +24,7 @@ export function Statistics({ percentile, rank, correctAnswers }:{percentile:stri
                 <div className="flex">
                     <div className=" flex justify-center items-center w-12 h-12 bg-slate-200 rounded-full p-3"><img src="checkbox.png"></img></div>
                     <div className="pl-5 pr-10">
-                        <div className="font-bold text-xl">{correctAnswers}/15</div>
+                        <div className="font-bold text-xl">{score}/15</div>
                         <div className="font-semibold text-slate-400 text-md">CORRECT ANSWERS</div>
                     </div>
                 </div>

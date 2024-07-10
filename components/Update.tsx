@@ -1,9 +1,16 @@
-"use client"
-
 import { useState } from "react";
 import { UpdateScores } from "./Updatebox";
 
-export function Update() {
+interface UpdatePropsType {
+    rank?: string;
+    percentile?: string;
+    score?: string;
+    setRank: (value: string) => void;
+    setPercentile: (value: string) => void;
+    setScore: (value: string) => void;
+}
+
+export function Update({ rank, setRank, percentile, setPercentile, score, setScore }: UpdatePropsType) {
     const [showUpdateScores, setShowUpdateScores] = useState(false);
 
     return (
@@ -13,7 +20,15 @@ export function Update() {
                     Update
                 </button>
             </div>
-            {showUpdateScores && <UpdateScores onClose={() => setShowUpdateScores(false)} />}
+            {showUpdateScores && <UpdateScores
+                rank={rank}
+                setRank={setRank}
+                percentile={percentile}
+                setPercentile={setPercentile}
+                score={score}
+                setScore={setScore}
+                onClose={() => setShowUpdateScores(false)}
+            />}
         </div>
     );
 }
