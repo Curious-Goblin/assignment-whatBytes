@@ -20,7 +20,7 @@ export function Html({ questions, duration, submittedDate, rank, setRank, percen
                 <div className="w-16 h-16 md:w-24 md:h-24 pt-2 md:pt-0">
                     <img src="html.jpg" alt="HTML Logo" />
                 </div>
-                <div className="pt-4 md:pt-0 md:pl-4 flex-grow">
+                <div className="pt-4 md:pt-4 md:pl-4 flex-grow">
                     <div className="text-xl font-extrabold">
                         Hyper Text Markup Language
                     </div>
@@ -32,7 +32,7 @@ export function Html({ questions, duration, submittedDate, rank, setRank, percen
                     </div>
                 </div>
             </div>
-            <div className="w-fit pt-2 pb-4 md:pb-0 md:pt-0 md:pl-4">
+            <div className="w-fit pt-2 pb-4 md:pb-0 md:pt-2 md:pl-4">
                 <Update
                     rank={rank}
                     setRank={setRank}

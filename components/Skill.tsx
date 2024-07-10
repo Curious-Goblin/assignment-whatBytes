@@ -31,7 +31,7 @@ export function Skill() {
                 Skill test
             </div>
             <div className="flex flex-col md:flex-row ">
-                <div className="w-screen md:w-1/2 mb-6 md:mb-0 md:pr-4">
+                <div className="w-screen md:w-1/2 mb-6 md:mb-0 md:pr-0">
                     <Html
                         questions="08"
                         duration="15"
@@ -50,7 +50,7 @@ export function Skill() {
                     />
                     <Comparision percentile={percentile} />
                 </div>
-                <div className="w-screen md:w-1/2 md:pl-4">
+                <div className="w-screen md:w-1/2 md:pl-0">
                     <SyllabusAnalysis />
                     {/* @ts-ignore */}
                     <QuestionAnalysis score={score} />

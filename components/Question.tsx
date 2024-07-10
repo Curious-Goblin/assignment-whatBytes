@@ -3,7 +3,7 @@ import { PieChart } from "./PieChart";
 export function QuestionAnalysis({ score }: { score: string }) {
   return (
     <div className="m-3 md:m-0">
-      <div className="p-2 lg:p-5 md:p-10 md:ml-4 mt-8 flex flex-col bg-white border rounded-lg max-w-5xl w-full md:mx-auto h-fit">
+      <div className="p-4 lg:p-5 md:p-10 md:ml-4 mt-8 flex flex-col bg-white border rounded-lg max-w-5xl w-full md:mx-auto h-fit">
         <div className="flex justify-between">
           <div className="text-xl font-bold mb-10">Question Analysis</div>
           <div className="text-blue-800 font-extrabold">{score}/15</div>

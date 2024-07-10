@@ -1,6 +1,6 @@
 export function Statistics({ percentile, rank, score }:{percentile:string,rank:string,score:string}) {
     return (
-        <div className="border rounded-lg p-2 md:p-2 lg:p-5 m-3 mt-8">
+        <div className="border rounded-lg p-4 md:p-2 lg:p-5 m-3 mt-8">
             <div className="font-extrabold text-xl">
                 Quick Statistics
             </div>

@@ -7,8 +7,8 @@ export function SyllabusAnalysis() {
   ];
 
   return (
-    <div className="m-3 md:m-0">
-      <div className="p-2 lg:p-5 md:p-10 md:ml-4 bg-white border rounded-lg max-w-5xl w-full md:mx-auto h-fit">
+    <div className="m-3">
+      <div className="p-4 lg:p-5 md:p-10 md:ml-4 bg-white border rounded-lg max-w-5xl w-full md:mx-auto h-fit">
       <h2 className="text-xl font-bold mb-10">Syllabus Wise Analysis</h2>
       {data.map((item, index) => (
         <div key={index} className="mb-4">
