@@ -10,7 +10,7 @@ export function UserProfile() {
                     </img>
                 </div>
                 <div className="hidden  md:block pt-1 first-line:justify-center font-bold text-md md:text-lg lg:text-xl first:items-center">
-                    Rahil Siddque
+                    Sourabh Poddar
                 </div>
             </div>
         </div>

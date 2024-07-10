@@ -49,17 +49,10 @@ export function UpdateScores({ onClose }: UpdateScoresProps) {
         if (Object.keys(errors).length > 0) {
             setErrors(errors);
         } else {
-            // Save the updated state values
-            setRank(rank);
-            setPercentile(percentile);
-            setScore(score);
-
-            // Log the updated values for confirmation
             console.log({ rank, percentile, score });
-
-            // Close the modal
             onClose();
         }
+        return [rank,percentile,score]
     };
 
     return (
