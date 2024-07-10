@@ -1,6 +1,6 @@
 export function Sidebar() {
     return (
-        <div className="hidden md:block p-8 pr-16 w-full max-w-fit flex flex-col gap-4 border-r flex-grow">
+        <div className="hidden md:block p-8 pr-16 w-full max-w-fit flex-col gap-4 border-r flex-grow">
             <div className="flex flex-col gap-4">
                 <div className=" px-6 flex items-center space-x-4">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" className="size-6">

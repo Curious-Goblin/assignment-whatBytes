@@ -1,4 +1,3 @@
-import { stat } from 'fs';
 import React, { useState } from 'react';
 
 interface Errorstype {
@@ -131,7 +130,7 @@ export function UpdateScores({ onClose, rank, setRank, percentile, setPercentile
                     </div>
                 </form>
                 <div className="flex justify-end mt-6 space-x-4">
-                    <button className="bg-white border border-blue-800 border-2 font-bold text-blue-800 rounded px-4 py-2" onClick={onClose}>Cancel</button>
+                    <button className="bg-white border-blue-800 border-2 font-bold text-blue-800 rounded px-4 py-2" onClick={onClose}>Cancel</button>
                     <button className="bg-blue-800 text-white rounded font-bold px-4 py-2" onClick={handleSave}>Save</button>
                 </div>
             </div>
