@@ -15,8 +15,8 @@ export function Update({ rank, setRank, percentile, setPercentile, score, setSco
 
     return (
         <div>
-            <div className="bg-blue-900 h-fit p-3 text-md rounded-lg font-bold text-white px-4 ml-4 mt-2">
-                <button onClick={() => setShowUpdateScores(true)}>
+            <div onClick={() => setShowUpdateScores(true)} className="bg-blue-900 h-fit p-3 text-md rounded-lg cursor-pointer font-bold text-white px-4 ml-4 mt-2">
+                <button>
                     Update
                 </button>
             </div>
