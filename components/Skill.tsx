@@ -27,7 +27,6 @@ export function Skill() {
                     <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
                 </svg>
                 {isOpen && <SidebarN isOpen={isOpen} setIsOpen={setIsOpen} />}
-
                 Skill test
             </div>
             <div className="flex flex-col md:flex-row ">
@@ -52,7 +51,6 @@ export function Skill() {
                 </div>
                 <div className="w-screen md:w-1/2 md:pl-0">
                     <SyllabusAnalysis />
-                    {/* @ts-ignore */}
                     <QuestionAnalysis score={score} />
                 </div>
             </div>
